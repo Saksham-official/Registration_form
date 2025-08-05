@@ -86,4 +86,8 @@ def serve_static_files(path):
 if __name__ == '__main__':
     # Running in debug mode is convenient for development.
     # For production, use a proper WSGI server like Gunicorn or uWSGI.
-    app.run(debug=True, port=5000)
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
+
+
